@@ -21,8 +21,17 @@ ask SA to run following command with root to install
 ```	
 
 3. Map your components with resources/groups once resource/agent is available in 6.2 HA env. please refer to [env mapping]. general steps are listed below:
-* 
-	 
+* create top level resource
+* under top level resource create resources for each ENV
+* add agents to resource for each ENV 
+* add your components to each agent
+> in the end it will looks like a tree in [resources]. one thing is you may cannot find your agent and that's because of issues during installation. change the installation files and try to restart the agent with following command:
+```sh
+cp /export/home/sw92854/installed.properties /opt/udeployha/agent/conf/agent 
+cd /opt/udeployha/agent/bin 
+./agent stop 
+./agent start
+```
 	
 > udeploy 6.2 integration with Hermes is not available yet. so need update packages manually with udclient.
 so use [udagent] to upload rpms to udeploy 6.2
@@ -37,3 +46,4 @@ udclient -weburl https://releasedeployment.ti.citigroup.net:8443 addVersionFiles
    [udagent]: <https://releasedeployment.ti.citigroup.net:8443/tools/udclient.zip>
    [udeploy guide]: <https://collaborate.citi.net/groups/application-and-release-management/blog/2016/05/26/migration-to-udeploy-62-ha-env>
    [env mapping]: <https://www.ibm.com/support/knowledgecenter/SS4GSP_6.1.2/com.ibm.udeploy.doc/topics/app_environment_mapping.html>
+   [resources]: <https://releasedeployment.ti.citigroup.net:8443/#resources>
