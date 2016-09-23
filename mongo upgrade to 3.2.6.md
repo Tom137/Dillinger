@@ -7,11 +7,12 @@
 
 2. after installation done, create folder  /opt/ref/mongodb-3.2.6/config
 3. cp mongo configuration to /opt/ref/mongodb-3.2.6/config
-4. create db folder 
+4. create db folder on unix box
 - /data/PFRefDataMongo/PFMongoCache3.2.6
 - /data/PFRefDataMongo/PFMongoCache3.2.6/node1
 - /data/PFRefDataMongo/PFMongoCache3.2.6/node2
-4. change the user to gpfadm for folders recursively on all the servers
+- /data/PFRefDataMongo/PFMongoCache3.2.6/node3
+4. change the user to gpfadm for folders recursively on all the servers and give 775 permission
 - /opt/ref/mongodb-3.2.6 
 - /data/PFRefDataMongo/PFMongoCache3.2.6
 5. test mongo connection
@@ -57,7 +58,7 @@
 	#check the status
 	rs.status();
 ```
-6. 	reconfig replicate
+6. 	reconfig replicate if any issue
 ```sh
 	cfg = rs.conf();
 	cfg.members.splice(2,1);
